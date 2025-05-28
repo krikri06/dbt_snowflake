@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: Multiple records per customer
+    columns:
+      - name: order_id
+        description: Primary key
+      - name: customer_id
+        description: none
+      - name: order_date
+        description: none
+      - name: amount
+        description: none
