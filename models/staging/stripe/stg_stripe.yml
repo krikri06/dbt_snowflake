@@ -1,0 +1,32 @@
+version: 2
+
+models: 
+  - name: stg_stripe_payments
+    columns:
+    - name: payment_id
+      description: Unique id
+      tests:
+        - unique
+        - not_null
+    - name: order_id
+      description: unique id?
+      tests:
+        - unique
+        - not_null
+        - relationships:
+            to: ref('stg_jaffle_shop__orders')
+            field: order_id
+    - name: payment_method
+      description: payment method
+      tests:
+        - accepted_values:
+            values: [credit_card, coupon, bank_transfer, gift_card]
+    - name: status
+      description: status of the order
+      tests:
+        - accepted_values:
+            values: ['success, fail']
+    - name: amount
+      description: amount of the order
+    - name: created_at
+      description: date of order creation
